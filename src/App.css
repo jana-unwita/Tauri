@@ -1,0 +1,170 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+/* ── App shell ── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #ffffff;
+  color: #24292f;
+  overflow: hidden;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #d0d7de;
+  flex-shrink: 0;
+  gap: 10px;
+  min-height: 38px;
+}
+
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folder-name {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: #24292f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-text { font-size: 11px; color: #57606a; white-space: nowrap; }
+
+.btn-open, .btn-diff {
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #fff;
+  white-space: nowrap;
+}
+.btn-open { background: #0969da; }
+.btn-open:hover { background: #0550ae; }
+.btn-diff { background: #2da44e; }
+.btn-diff:hover { background: #298e46; }
+.btn-open:disabled, .btn-diff:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── Body ── */
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #f6f8fa;
+  border-right: 1px solid #d0d7de;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 0;
+}
+
+.sidebar-empty { padding: 16px 12px; color: #57606a; font-size: 12px; }
+
+/* ── File tree ── */
+.file-tree, .tree-children { list-style: none; padding: 0; margin: 0; }
+.tree-children { padding-left: 12px; }
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #24292f;
+  font-size: 12px;
+  padding: 2px 8px 2px 6px;
+  cursor: pointer;
+  text-align: left;
+  gap: 4px;
+  min-height: 22px;
+}
+.tree-item:hover { background: #eaf0f8; }
+
+.tree-item.file.active { background: #dbeafe; color: #0550ae; }
+.tree-item.file.changed .tree-name { color: #9a6700; }
+.tree-item.file.active .tree-name { color: inherit; }
+
+.tree-icon { font-size: 10px; width: 12px; text-align: center; flex-shrink: 0; color: #57606a; }
+.tree-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.change-badge { display: flex; gap: 4px; flex-shrink: 0; font-size: 11px; }
+.add-count { color: #1a7f37; font-weight: 600; }
+.del-count { color: #cf222e; font-weight: 600; }
+
+/* ── Content ── */
+.content { flex: 1; overflow: auto; min-width: 0; }
+
+.empty { padding: 24px; color: #57606a; font-size: 13px; }
+
+/* ── Diff list ── */
+.diff-list { width: 100%; }
+
+/* ── Diff section (collapsible per file) ── */
+.diff-section {
+  width: 100%;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.diff-section-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  background: #f6f8fa;
+  border: none;
+  border-bottom: 1px solid #d0d7de;
+  cursor: pointer;
+  text-align: left;
+  gap: 8px;
+  font-family: "SF Mono", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: #24292f;
+}
+.diff-section-header:hover { background: #eaf0f8; }
+
+.diff-section-toggle {
+  font-size: 11px;
+  flex-shrink: 0;
+  color: #57606a;
+}
+
+.diff-section-path {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0550ae;
+  font-weight: 500;
+}
+
+.diff-section-stats {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.diff-section-body { width: 100%; overflow-x: auto; }
